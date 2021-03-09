@@ -1,0 +1,18 @@
+.counter-list {
+  width: 100%;
+  @include flex(space-between);
+  padding: 0 56px;
+}
+
+.counter {
+  width: 65px;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__value {
+    text-align: center;
+    @include font-settings($size: 56px, $height: 56px, $weight: 600);
+  }
+}

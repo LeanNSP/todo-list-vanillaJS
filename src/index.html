@@ -8,24 +8,28 @@
   </head>
 
   <body>
-      <header>
-          <h1>To Do list</h1>
-          <ul>
-              <li>
-                  <h3>Scope</h3>
-                  <p id="scope">0</p>
+      <header class="header">
+          <h1 class="header__title">To Do list</h1>
+          <ul class="counter-list">
+              <li class="counter">
+                  <h3 class="counter__title">Scope</h3>
+                  <p class="counter__value" id="scope">0</p>
               </li>
-              <li>
-                  <h3>Active</h3>
-                  <p id="active">0</p>
+              <li class="counter">
+                  <h3 class="counter__title">Active</h3>
+                  <p class="counter__value" id="active">0</p>
               </li>
-              <li>
-                  <h3>Successful</h3>
-                  <p id="successful">0</p>
+              <li class="counter">
+                  <h3 class="counter__title">Successful</h3>
+                  <p class="counter__value" id="successful">0</p>
               </li>
           </ul>
 
-          <button type="button" data-action="add" id="add-task-top">X</button>
+          <button class="header__button-add" type="button" data-action="add" id="add-task-top">
+            <svg  width="21" height="21">
+                <use xlink:href="./images/sprite.svg#icon-plus"></use>
+            </svg>
+          </button>
 
       </header>
 
