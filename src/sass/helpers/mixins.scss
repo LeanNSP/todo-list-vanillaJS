@@ -1,0 +1,59 @@
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-settings($size: '', $height: '', $weight: '') {
+  @if $size== '' and $height== '' {
+    font-weight: $weight;
+  } @else if $size== '' and $weight== '' {
+    line-height: $height;
+  } @else if $height== '' and $weight== '' {
+    font-size: $size;
+  } @else if $size== '' {
+    line-height: $height;
+    font-weight: $weight;
+  } @else if $height== '' {
+    font-size: $size;
+    font-weight: $weight;
+  } @else if $weight== '' {
+    font-size: $size;
+    line-height: $height;
+  } @else {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+  }
+}
+
+@mixin flex($justify-content: '', $align-items: '', $flex-wrap: '', $align-content: '') {
+  display: flex;
+
+  // flex-wrap
+  @if $flex-wrap== 'wrap' {
+    flex-wrap: wrap;
+  } @else {
+  }
+
+  // justify-content
+  @if $justify-content== 'center' {
+    justify-content: center;
+  } @else if $justify-content== 'space-between' {
+    justify-content: space-between;
+  } @else {
+  }
+
+  // align-items
+  @if $align-items== 'center' {
+    align-items: center;
+  } @else if $align-items== 'flex-end' {
+    align-items: flex-end;
+  } @else {
+  }
+
+  // align-content
+  @if $align-content== 'space-between' {
+    align-content: space-between;
+  } @else {
+  }
+}
