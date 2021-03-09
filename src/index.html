@@ -8,6 +8,43 @@
   </head>
 
   <body>
-      <!-- TODO: -->
+      <header>
+          <h1>To Do list</h1>
+          <ul>
+              <li>
+                  <h3>Scope</h3>
+                  <p id="scope">0</p>
+              </li>
+              <li>
+                  <h3>Active</h3>
+                  <p id="active">0</p>
+              </li>
+              <li>
+                  <h3>Successful</h3>
+                  <p id="successful">0</p>
+              </li>
+          </ul>
+
+          <button type="button" data-action="add" id="add-task-top">X</button>
+
+      </header>
+
+      <ul>
+          <li>
+              <input type="checkbox">
+              <span>9 Mar 2021</span>
+              <button class="task__edit" type="button" data-action="edit">E</button>
+              <button class="task__remove" type="button" data-action="remove">R</button>
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+          </li>
+      </ul>
+
+      <button type="button" data-action="add" id="add-task">Create new task</button>
   </body>
 </html>
