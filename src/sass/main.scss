@@ -1,5 +1,6 @@
 @import 'fonts.scss';
 
+// helpers
 @import 'helpers/variablies.scss';
 @import 'helpers/mixins.scss';
 
@@ -13,3 +14,10 @@
 
 // corner
 @import './components/corner.scss';
+
+// todo-list
+@import './components/todo-list.scss';
+@import './components/task.scss';
+
+// button-add
+@import './components/button-add.scss';

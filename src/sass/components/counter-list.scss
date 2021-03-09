@@ -1,7 +1,11 @@
 .counter-list {
   width: 100%;
   @include flex(space-between);
-  padding: 0 56px;
+  padding: 0 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 0 56px;
+  }
 }
 
 .counter {
