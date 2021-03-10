@@ -2,6 +2,8 @@
 
 import { refs } from './helpers/refs';
 
+import controller from './controller';
+
 import templateToDo from './templates/templateToDo';
 
 const view = {
@@ -15,6 +17,16 @@ const view = {
 
   renderToDoList(list) {
     refs.todoList.innerHTML = list.textContent;
+  },
+
+  renderCounters() {
+    const { scopeCounter, activeCounter, successfulCounter } = refs;
+
+    const { scope, successful, active } = controller.calcCounters();
+
+    scopeCounter.textContent = scope;
+    successfulCounter.textContent = successful;
+    activeCounter.textContent = active;
   },
 
   renderTask(newTask) {
