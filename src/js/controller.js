@@ -4,6 +4,7 @@ import model from './model';
 import view from './view';
 
 import createTask from './services/createTask';
+import getRefCurrentToDo from './services/getRefCurrentToDo';
 
 import templateToDo from './templates/templateToDo';
 
@@ -31,7 +32,6 @@ const controller = {
   },
 
   addTask() {
-    //TODO:
     const tasks = model.getTasks();
     const newTask = createTask(tasks);
 
@@ -40,6 +40,34 @@ const controller = {
     view.renderTask(newTask);
 
     controller.renderStatement();
+  },
+
+  onClickToDoList(target) {
+    // TODO:refactoring!
+    const { tagName } = target;
+    let currentButton;
+    let action;
+
+    if (tagName === 'use') {
+      currentButton = target.parentNode.parentNode;
+      action = currentButton.dataset.action;
+    }
+
+    if (tagName === 'svg') {
+      currentButton = target.parentNode;
+      action = currentButton.dataset.action;
+    }
+
+    if (action === 'remove') {
+      const refCurrentToDo = getRefCurrentToDo(target);
+      const id = parseInt(refCurrentToDo.id);
+
+      model.removeTask(id);
+
+      view.removeToDo(refCurrentToDo);
+
+      controller.renderStatement();
+    }
   },
 };
 

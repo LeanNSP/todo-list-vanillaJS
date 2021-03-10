@@ -20,6 +20,10 @@ const view = {
   renderTask(newTask) {
     refs.todoList.insertAdjacentHTML('afterbegin', templateToDo(newTask));
   },
+
+  removeToDo(refToDo) {
+    refToDo.remove();
+  },
 };
 
 export default view;

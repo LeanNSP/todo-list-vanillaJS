@@ -14,6 +14,12 @@ const model = {
 
     localStorage.saveTasks(this.tasks);
   },
+
+  removeTask(id) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
+
+    localStorage.saveTasks(this.tasks);
+  },
 };
 
 export default model;
