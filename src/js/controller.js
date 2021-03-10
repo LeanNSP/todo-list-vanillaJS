@@ -4,7 +4,9 @@ import model from './model';
 import view from './view';
 
 import createTask from './services/createTask';
-import getRefCurrentToDo from './services/getRefCurrentToDo';
+import currentToDo from './services/currentToDo';
+
+import taskButtonsClickHandler from './handlers/taskButtonsClickHandler';
 
 import templateToDo from './templates/templateToDo';
 
@@ -49,36 +51,14 @@ const controller = {
   onClickToDoList(target) {
     // TODO:refactoring!
     const { tagName } = target;
-    let currentButton;
-    let action;
 
-    if (tagName === 'use') {
-      currentButton = target.parentNode.parentNode;
-      action = currentButton.dataset.action;
-    }
-
-    if (tagName === 'svg') {
-      currentButton = target.parentNode;
-      action = currentButton.dataset.action;
-    }
-
-    const refCurrentToDo = getRefCurrentToDo(target);
-    const id = parseInt(refCurrentToDo.id);
-    const description = refCurrentToDo.querySelector('.task__description');
-
-    // remove
-    if (action === 'remove') {
-      model.removeTask(id);
-
-      view.removeToDo(refCurrentToDo);
-
-      view.renderCounters();
-
-      controller.renderStatement();
-    }
+    currentToDo.setIdAndRefs(target);
 
     // checked
     if (tagName === 'INPUT') {
+      const id = currentToDo.getId();
+      const description = currentToDo.getDescription();
+
       model.updateChecked(id);
 
       view.onChecked(description);
@@ -86,19 +66,7 @@ const controller = {
       view.renderCounters();
     }
 
-    // edit
-    if (action === 'edit') {
-      view.editToDo(refCurrentToDo);
-    }
-
-    // save
-    if (action === 'save') {
-      const newDescription = description.textContent;
-
-      model.updateDescription(id, newDescription);
-
-      view.saveToDo(refCurrentToDo);
-    }
+    taskButtonsClickHandler(target);
   },
 
   calcCounters() {
