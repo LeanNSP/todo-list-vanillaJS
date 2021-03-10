@@ -58,15 +58,25 @@ const controller = {
       action = currentButton.dataset.action;
     }
 
-    if (action === 'remove') {
-      const refCurrentToDo = getRefCurrentToDo(target);
-      const id = parseInt(refCurrentToDo.id);
+    const refCurrentToDo = getRefCurrentToDo(target);
+    const id = parseInt(refCurrentToDo.id);
 
+    // remove
+    if (action === 'remove') {
       model.removeTask(id);
 
       view.removeToDo(refCurrentToDo);
 
       controller.renderStatement();
+    }
+
+    // checked
+    if (tagName === 'INPUT') {
+      const description = refCurrentToDo.querySelector('.task__description');
+
+      model.updateChecked(id);
+
+      view.onChecked(description);
     }
   },
 };

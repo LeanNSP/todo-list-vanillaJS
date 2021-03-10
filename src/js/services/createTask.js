@@ -18,6 +18,7 @@ const createTask = tasks => {
     id: idGenerator(tasks),
     date: date.toLocaleDateString('en-GB', options),
     describtion: 'Click edit and describe your task, please.',
+    isChecked: false,
   };
 };
 

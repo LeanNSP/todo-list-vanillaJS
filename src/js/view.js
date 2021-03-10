@@ -24,6 +24,10 @@ const view = {
   removeToDo(refToDo) {
     refToDo.remove();
   },
+
+  onChecked(description) {
+    description.classList.toggle('task__description--checked');
+  },
 };
 
 export default view;
