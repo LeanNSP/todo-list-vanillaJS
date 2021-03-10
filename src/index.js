@@ -7,9 +7,10 @@ import controller from './js/controller';
 import './sass/main.scss';
 
 const { addButtonTop, addButton } = refs;
-const { renderToDoList, addTask } = controller;
+const { renderStatement, renderToDoList, addTask } = controller;
 
 // TODO:
+renderStatement();
 renderToDoList();
 
 addButtonTop.addEventListener('click', addTask);

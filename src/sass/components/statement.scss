@@ -1,0 +1,10 @@
+.statement {
+  text-align: center;
+  padding: 25px 0;
+  @include font-settings($size: 14px, $height: 22px);
+  color: $secondary-font-color;
+
+  @media screen and (max-width: 599.9px) {
+    padding: 0 10px;
+  }
+}
