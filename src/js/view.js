@@ -5,6 +5,7 @@ import { refs } from './helpers/refs';
 import controller from './controller';
 
 import currentToDo from './services/currentToDo';
+import iconsToggle from './services/iconsToggle';
 
 import templateToDo from './templates/templateToDo';
 
@@ -43,26 +44,22 @@ const view = {
     description.classList.toggle('task__description--checked');
   },
 
-  //TODO: refactoring!
   editToDo() {
     const { buttonEdit, iconEdit, iconSave, description } = currentToDo.getRefs();
 
     description.setAttribute('contenteditable', 'true');
 
-    iconEdit.classList.add('hidden');
-    iconSave.classList.remove('hidden');
+    iconsToggle(iconEdit, iconSave);
 
     buttonEdit.dataset.action = 'save';
   },
 
-  //TODO: refactoring!
   saveToDo() {
     const { buttonEdit, iconEdit, iconSave, description } = currentToDo.getRefs();
 
     description.setAttribute('contenteditable', 'false');
 
-    iconSave.classList.add('hidden');
-    iconEdit.classList.remove('hidden');
+    iconsToggle(iconSave, iconEdit);
 
     buttonEdit.dataset.action = 'edit';
   },
