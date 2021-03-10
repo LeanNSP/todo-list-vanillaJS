@@ -13,3 +13,7 @@ body {
   color: $primary-font-color;
   @include font-settings($size: 12px, $height: 16px, $weight: 400);
 }
+
+.hidden {
+  display: none;
+}
