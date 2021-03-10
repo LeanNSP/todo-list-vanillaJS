@@ -60,6 +60,7 @@ const controller = {
 
     const refCurrentToDo = getRefCurrentToDo(target);
     const id = parseInt(refCurrentToDo.id);
+    const description = refCurrentToDo.querySelector('.task__description');
 
     // remove
     if (action === 'remove') {
@@ -72,11 +73,23 @@ const controller = {
 
     // checked
     if (tagName === 'INPUT') {
-      const description = refCurrentToDo.querySelector('.task__description');
-
       model.updateChecked(id);
 
       view.onChecked(description);
+    }
+
+    // edit
+    if (action === 'edit') {
+      view.editToDo(refCurrentToDo);
+    }
+
+    // save
+    if (action === 'save') {
+      const newDescription = description.textContent;
+
+      model.updateDescription(id, newDescription);
+
+      view.saveToDo(refCurrentToDo);
     }
   },
 };
