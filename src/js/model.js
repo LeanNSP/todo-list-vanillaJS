@@ -11,7 +11,7 @@ const model = {
 
   addTask(task) {
     this.tasks = [...this.tasks, task];
-    console.log(this.tasks); //TODO: delete
+
     localStorage.saveTasks(this.tasks);
   },
 };
