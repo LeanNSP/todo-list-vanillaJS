@@ -1,7 +1,9 @@
 'use strict';
 
+import localStorage from './services/localStorage';
+
 const model = {
-  tasks: [],
+  tasks: localStorage.getTasks() || [],
 
   getTasks() {
     return this.tasks;
@@ -9,6 +11,8 @@ const model = {
 
   addTask(task) {
     this.tasks = [...this.tasks, task];
+    console.log(this.tasks); //TODO: delete
+    localStorage.saveTasks(this.tasks);
   },
 };
 
