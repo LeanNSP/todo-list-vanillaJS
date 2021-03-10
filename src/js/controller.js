@@ -29,6 +29,8 @@ const controller = {
     });
 
     view.renderToDoList(list);
+
+    view.renderCounters();
   },
 
   addTask() {
@@ -38,6 +40,8 @@ const controller = {
     model.addTask(newTask);
 
     view.renderTask(newTask);
+
+    view.renderCounters();
 
     controller.renderStatement();
   },
@@ -68,6 +72,8 @@ const controller = {
 
       view.removeToDo(refCurrentToDo);
 
+      view.renderCounters();
+
       controller.renderStatement();
     }
 
@@ -76,6 +82,8 @@ const controller = {
       model.updateChecked(id);
 
       view.onChecked(description);
+
+      view.renderCounters();
     }
 
     // edit
@@ -91,6 +99,16 @@ const controller = {
 
       view.saveToDo(refCurrentToDo);
     }
+  },
+
+  calcCounters() {
+    const tasks = model.getTasks();
+
+    const scope = tasks.length;
+    const successful = tasks.filter(task => task.isChecked).length;
+    const active = scope - successful;
+
+    return { scope, successful, active };
   },
 };
 
