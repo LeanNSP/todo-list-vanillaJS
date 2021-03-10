@@ -27,6 +27,7 @@ const taskButtonsOperations = {
   saveTaskDescription: () => {
     const id = currentToDo.getId();
     const description = currentToDo.getDescription();
+
     const newDescription = description.textContent;
 
     model.updateDescription(id, newDescription);

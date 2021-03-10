@@ -7,6 +7,7 @@ import createTask from './services/createTask';
 import currentToDo from './services/currentToDo';
 
 import taskButtonsClickHandler from './handlers/taskButtonsClickHandler';
+import checkboxClickHandler from './handlers/checkboxClickHandler';
 
 import templateToDo from './templates/templateToDo';
 
@@ -49,22 +50,9 @@ const controller = {
   },
 
   onClickToDoList(target) {
-    // TODO:refactoring!
-    const { tagName } = target;
-
     currentToDo.setIdAndRefs(target);
 
-    // checked
-    if (tagName === 'INPUT') {
-      const id = currentToDo.getId();
-      const description = currentToDo.getDescription();
-
-      model.updateChecked(id);
-
-      view.onChecked(description);
-
-      view.renderCounters();
-    }
+    checkboxClickHandler(target);
 
     taskButtonsClickHandler(target);
   },
