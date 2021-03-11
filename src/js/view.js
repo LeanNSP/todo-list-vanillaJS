@@ -7,7 +7,7 @@ import controller from './controller';
 import currentToDo from './services/currentToDo';
 import iconsToggle from './services/iconsToggle';
 
-import { TO_DO_PLACEHOLDER } from './helpers/variables';
+import { TO_DO_PLACEHOLDER } from './helpers/config';
 
 import templateToDo from './templates/templateToDo';
 

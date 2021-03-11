@@ -1,6 +1,6 @@
 'use strict';
 
-import { TO_DO_PLACEHOLDER } from '../helpers/variables';
+import { TO_DO_PLACEHOLDER } from '../helpers/config';
 
 const idGenerator = tasks => {
   if (!tasks.length) {

@@ -6,6 +6,8 @@ import view from '../../view';
 
 import currentToDo from '../../services/currentToDo';
 
+import descriptionValidator from '../../validators/descriptionValidator';
+
 const taskButtonsOperations = {
   removeTask: () => {
     const id = currentToDo.getId();
@@ -29,6 +31,12 @@ const taskButtonsOperations = {
     const description = currentToDo.getDescription();
 
     const newDescription = description.textContent;
+
+    const isValid = descriptionValidator(newDescription);
+
+    if (!isValid) {
+      return;
+    }
 
     model.updateDescription(id, newDescription);
 
