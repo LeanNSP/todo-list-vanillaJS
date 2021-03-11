@@ -9,9 +9,7 @@ import './sass/main.scss';
 const { addButtonTop, addButton, todoList } = refs;
 const { renderStatement, renderToDoList, addTask, onClickToDoList } = controller;
 
-// TODO:
 renderStatement();
-
 renderToDoList();
 
 addButtonTop.addEventListener('click', addTask);

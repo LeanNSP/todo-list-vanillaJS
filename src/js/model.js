@@ -1,6 +1,6 @@
 'use strict';
 
-import localStorage from './services/localStorage';
+import { localStorage } from './services';
 
 const model = {
   tasks: localStorage.getTasks() || [],

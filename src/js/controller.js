@@ -3,8 +3,9 @@
 import model from './model';
 import view from './view';
 
-import createTask from './services/createTask';
-import getRefCurrentToDo from './services/getRefCurrentToDo';
+import { createTask, currentToDo, isNotSaved } from './services';
+
+import { taskButtonsClickHandler, checkboxClickHandler } from './handlers';
 
 import templateToDo from './templates/templateToDo';
 
@@ -35,6 +36,7 @@ const controller = {
 
   addTask() {
     const tasks = model.getTasks();
+
     const newTask = createTask(tasks);
 
     model.addTask(newTask);
@@ -47,58 +49,19 @@ const controller = {
   },
 
   onClickToDoList(target) {
-    // TODO:refactoring!
-    const { tagName } = target;
-    let currentButton;
-    let action;
-
-    if (tagName === 'use') {
-      currentButton = target.parentNode.parentNode;
-      action = currentButton.dataset.action;
+    if (isNotSaved(target)) {
+      return;
     }
 
-    if (tagName === 'svg') {
-      currentButton = target.parentNode;
-      action = currentButton.dataset.action;
+    currentToDo.setIdAndRefs(target);
+
+    if (currentToDo.isEmpty()) {
+      return;
     }
 
-    const refCurrentToDo = getRefCurrentToDo(target);
-    const id = parseInt(refCurrentToDo.id);
-    const description = refCurrentToDo.querySelector('.task__description');
+    checkboxClickHandler(target);
 
-    // remove
-    if (action === 'remove') {
-      model.removeTask(id);
-
-      view.removeToDo(refCurrentToDo);
-
-      view.renderCounters();
-
-      controller.renderStatement();
-    }
-
-    // checked
-    if (tagName === 'INPUT') {
-      model.updateChecked(id);
-
-      view.onChecked(description);
-
-      view.renderCounters();
-    }
-
-    // edit
-    if (action === 'edit') {
-      view.editToDo(refCurrentToDo);
-    }
-
-    // save
-    if (action === 'save') {
-      const newDescription = description.textContent;
-
-      model.updateDescription(id, newDescription);
-
-      view.saveToDo(refCurrentToDo);
-    }
+    taskButtonsClickHandler(target);
   },
 
   calcCounters() {

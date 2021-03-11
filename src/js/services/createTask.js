@@ -1,5 +1,7 @@
 'use strict';
 
+import { TO_DO_PLACEHOLDER } from '../helpers/config';
+
 const idGenerator = tasks => {
   if (!tasks.length) {
     return 1;
@@ -17,7 +19,7 @@ const createTask = tasks => {
   return {
     id: idGenerator(tasks),
     date: date.toLocaleDateString('en-GB', options),
-    describtion: 'Click edit and describe your task, please.',
+    describtion: TO_DO_PLACEHOLDER,
     isChecked: false,
   };
 };

@@ -1,8 +1,11 @@
 'use strict';
 
 import { refs } from './helpers/refs';
+import { TO_DO_PLACEHOLDER } from './helpers/config';
 
 import controller from './controller';
+
+import { currentToDo, iconsToggle } from './services';
 
 import templateToDo from './templates/templateToDo';
 
@@ -41,33 +44,33 @@ const view = {
     description.classList.toggle('task__description--checked');
   },
 
-  //TODO: refactoring!
-  editToDo(refCurrentToDo) {
-    console.log(refCurrentToDo); //TODO: delete
-    const buttonEdit = refCurrentToDo.querySelector('.task__edit');
-    const iconEdit = refCurrentToDo.querySelector('svg[data-action="edit"]');
-    const iconSave = refCurrentToDo.querySelector('svg[data-action="save"]');
-    const description = refCurrentToDo.querySelector('.task__description');
+  editToDo() {
+    const { buttonEdit, iconEdit, iconSave, description } = currentToDo.getRefs();
 
     description.setAttribute('contenteditable', 'true');
 
-    iconEdit.classList.add('hidden');
-    iconSave.classList.remove('hidden');
+    const toDoText = description.textContent;
+
+    if (toDoText === TO_DO_PLACEHOLDER) {
+      description.textContent = '';
+    }
+
+    description.focus();
+    description.onfocus = () => true;
+
+    iconsToggle(iconEdit, iconSave);
 
     buttonEdit.dataset.action = 'save';
   },
 
-  //TODO: refactoring!
-  saveToDo(refCurrentToDo) {
-    const buttonEdit = refCurrentToDo.querySelector('.task__edit');
-    const iconEdit = refCurrentToDo.querySelector('svg[data-action="edit"]');
-    const iconSave = refCurrentToDo.querySelector('svg[data-action="save"]');
-    const description = refCurrentToDo.querySelector('.task__description');
+  saveToDo() {
+    const { buttonEdit, iconEdit, iconSave, description } = currentToDo.getRefs();
 
     description.setAttribute('contenteditable', 'false');
 
-    iconSave.classList.add('hidden');
-    iconEdit.classList.remove('hidden');
+    description.onfocus = null;
+
+    iconsToggle(iconSave, iconEdit);
 
     buttonEdit.dataset.action = 'edit';
   },
