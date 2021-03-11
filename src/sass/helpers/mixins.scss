@@ -1,0 +1,32 @@
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-settings($size: '', $height: '', $weight: '') {
+  @if $size== '' and $height== '' {
+    font-weight: $weight;
+  } @else if $size== '' and $weight== '' {
+    line-height: $height;
+  } @else if $height== '' and $weight== '' {
+    font-size: $size;
+  } @else if $size== '' {
+    line-height: $height;
+    font-weight: $weight;
+  } @else if $height== '' {
+    font-size: $size;
+    font-weight: $weight;
+  } @else if $weight== '' {
+    font-size: $size;
+    line-height: $height;
+  } @else {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+  }
+}
+
+@mixin flex($justify-content) {
+  display: flex;
+  justify-content: $justify-content;
+}

@@ -1,0 +1,10 @@
+.corner {
+  @include width-height(41px, 41px);
+  background: $violet;
+
+  &__bg {
+    @include width-height(100%, 100%);
+    background: $primary-background;
+    border-top-left-radius: 100%;
+  }
+}

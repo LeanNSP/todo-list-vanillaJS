@@ -1,0 +1,19 @@
+.todo-list {
+  width: 100%;
+  padding: 0 15px;
+
+  @media screen and (min-width: 600px) {
+    padding: 0 56px;
+  }
+
+  &__item {
+    border-bottom: 1px solid $task-border;
+    margin-bottom: 19px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-bottom-color: $violet;
+    }
+  }
+}

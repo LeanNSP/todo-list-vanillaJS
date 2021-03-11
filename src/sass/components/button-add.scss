@@ -1,0 +1,29 @@
+.wrapper {
+  @include flex(center);
+}
+
+.button-add {
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 40px;
+  @include width-height(208px, 48px);
+  background: $primary-green;
+  border-radius: 11px;
+  border: none;
+  color: $white-font;
+  @include font-settings($size: 16px, $height: 24px, $weight: 600);
+  transition: transform 200ms ease-in-out;
+
+  &__icon {
+    fill: $white-font;
+    margin-right: 10px;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}

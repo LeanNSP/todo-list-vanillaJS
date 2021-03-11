@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $main-font-stack;
+  color: $primary-font-color;
+  @include font-settings($size: 12px, $height: 16px, $weight: 400);
+}
+
+.hidden {
+  display: none;
+}

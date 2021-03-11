@@ -1,0 +1,105 @@
+.task {
+  &__control {
+    @include flex(space-between);
+    margin-bottom: 3px;
+    height: 18px;
+  }
+
+  &__container-checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    & .task__custom-checkbox::after {
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 10px;
+      border: solid $primary-background;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  &__checkbox {
+    @include width-height(0px, 0px);
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked ~ .task__custom-checkbox {
+      background-color: $violet;
+    }
+
+    &:checked ~ .task__custom-checkbox:after {
+      display: block;
+    }
+  }
+
+  &__custom-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include width-height(18px, 18px);
+    border: solid 2px $violet;
+    border-radius: 2px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+    }
+  }
+
+  &__date {
+    color: $violet;
+    padding-left: 26px;
+  }
+
+  &__edit,
+  &__remove {
+    padding: 0;
+    border: none;
+    background: none;
+    @include width-height(18px, 18px);
+
+    & svg {
+      fill: $primary-icon-color;
+
+      &:hover,
+      &:focus,
+      &:active {
+        fill: $violet;
+      }
+    }
+  }
+
+  &__edit {
+    margin-right: 15px;
+  }
+
+  &__remove {
+    @media screen and (min-width: 600px) {
+      margin-right: 32px;
+    }
+  }
+
+  &__description {
+    margin-bottom: 8px;
+    padding-left: 26px;
+    padding-right: 26px;
+    @include font-settings($size: 14px, $height: 22px);
+
+    @media screen and (min-width: 768px) {
+      padding-right: 118px;
+    }
+
+    &--checked {
+      text-decoration: line-through;
+      color: $secondary-font-color;
+    }
+  }
+}
