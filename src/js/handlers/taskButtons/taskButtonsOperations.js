@@ -4,7 +4,7 @@ import controller from '../../controller';
 import model from '../../model';
 import view from '../../view';
 
-import currentToDo from '../../services/currentToDo';
+import { currentToDo } from '../../services';
 
 import descriptionValidator from '../../validators/descriptionValidator';
 

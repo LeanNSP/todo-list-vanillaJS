@@ -3,11 +3,9 @@
 import model from './model';
 import view from './view';
 
-import createTask from './services/createTask';
-import currentToDo from './services/currentToDo';
+import { createTask, currentToDo, isNotSaved } from './services';
 
-import taskButtonsClickHandler from './handlers/taskButtonsClickHandler';
-import checkboxClickHandler from './handlers/checkboxClickHandler';
+import { taskButtonsClickHandler, checkboxClickHandler } from './handlers';
 
 import templateToDo from './templates/templateToDo';
 
@@ -38,6 +36,7 @@ const controller = {
 
   addTask() {
     const tasks = model.getTasks();
+
     const newTask = createTask(tasks);
 
     model.addTask(newTask);
@@ -50,7 +49,15 @@ const controller = {
   },
 
   onClickToDoList(target) {
+    if (isNotSaved(target)) {
+      return;
+    }
+
     currentToDo.setIdAndRefs(target);
+
+    if (currentToDo.isEmpty()) {
+      return;
+    }
 
     checkboxClickHandler(target);
 

@@ -45,6 +45,10 @@ const currentToDo = {
   getDescription() {
     return this.refs.description;
   },
+
+  isEmpty() {
+    return !Boolean(this.id);
+  },
 };
 
 export default currentToDo;

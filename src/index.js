@@ -10,7 +10,6 @@ const { addButtonTop, addButton, todoList } = refs;
 const { renderStatement, renderToDoList, addTask, onClickToDoList } = controller;
 
 renderStatement();
-
 renderToDoList();
 
 addButtonTop.addEventListener('click', addTask);

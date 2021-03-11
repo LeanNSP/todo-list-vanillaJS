@@ -3,7 +3,7 @@
 import model from '../model';
 import view from '../view';
 
-import currentToDo from '../services/currentToDo';
+import { currentToDo } from '../services';
 
 const checkboxClickHandler = target => {
   if (target.tagName !== 'INPUT') {

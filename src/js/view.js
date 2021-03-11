@@ -1,13 +1,11 @@
 'use strict';
 
 import { refs } from './helpers/refs';
+import { TO_DO_PLACEHOLDER } from './helpers/config';
 
 import controller from './controller';
 
-import currentToDo from './services/currentToDo';
-import iconsToggle from './services/iconsToggle';
-
-import { TO_DO_PLACEHOLDER } from './helpers/config';
+import { currentToDo, iconsToggle } from './services';
 
 import templateToDo from './templates/templateToDo';
 
