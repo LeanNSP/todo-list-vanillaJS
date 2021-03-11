@@ -7,6 +7,8 @@ import controller from './controller';
 import currentToDo from './services/currentToDo';
 import iconsToggle from './services/iconsToggle';
 
+import { TO_DO_PLACEHOLDER } from './helpers/variables';
+
 import templateToDo from './templates/templateToDo';
 
 const view = {
@@ -49,6 +51,15 @@ const view = {
 
     description.setAttribute('contenteditable', 'true');
 
+    const toDoText = description.textContent;
+
+    if (toDoText === TO_DO_PLACEHOLDER) {
+      description.textContent = '';
+    }
+
+    description.focus();
+    description.onfocus = () => true;
+
     iconsToggle(iconEdit, iconSave);
 
     buttonEdit.dataset.action = 'save';
@@ -58,6 +69,8 @@ const view = {
     const { buttonEdit, iconEdit, iconSave, description } = currentToDo.getRefs();
 
     description.setAttribute('contenteditable', 'false');
+
+    description.onfocus = null;
 
     iconsToggle(iconSave, iconEdit);
 
